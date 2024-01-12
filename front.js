@@ -33,7 +33,7 @@ async function mostrarLista() {
     $bntsLeer.forEach(($btn) => {
         $btn.addEventListener('click', async (e) => {
             const response = await leerLista(e.target.id);
-            $porFIN.textContent = `🤯${response.dato.entregado}`;
+            $porFIN.textContent = `🤯${response.dato.correo}`;
         });
     });
 
