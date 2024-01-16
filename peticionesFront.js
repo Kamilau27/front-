@@ -17,3 +17,7 @@ export async function leerLista(id) {
     const response = await fetch(urlApi + "Lista/" + id);
     return await response.json();
 }
+
+export async function crearLista(objeto) {
+    console.log(objeto);
+}
