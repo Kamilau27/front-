@@ -6,13 +6,16 @@
 4. Ejecucion codigo */
 
 //Importaciones
-import { obtenerRaiz, leerListas, leerLista} from "./peticionesFront.js";
+import { obtenerRaiz, leerListas, leerLista, crearLista} from "./peticionesFront.js";
 
  
  //Variables
 const d = document;
 
-const $saludo = d.getElementById('saludo'), $listaNombres = d.getElementById("listaNombres"), $porFIN = d.getElementById("porFIN");
+const $saludo = d.getElementById('saludo'), 
+      $listaNombres = d.getElementById("listaNombres"), 
+      $porFIN = d.getElementById("porFIN"),
+      $crearLista = d.getElementById("crearLista");
 
 
 //Funciones
@@ -36,10 +39,22 @@ async function mostrarLista() {
             $porFIN.textContent = `🤯${response.dato.correo}`;
         });
     });
+    function escucharEventos() {
+        $crearLista.addEventListener('submit', (evento)=> {
+            evento.preventDefault(); 
+            const objeto = {
+                nombre: $crearLista.inDestinatario.value,
+                correo: $crearLista.inCorreo.value,
+                mayorEdad: true,
+            };
+            crearLista(objeto);
+        });
+    }
 
 }
 //Ejecucion codigo
 d.addEventListener("DOMContentLoaded", ()=> {
     saludar();
     mostrarLista();
+    escucharEventos();
 });
